@@ -3,16 +3,17 @@ from linkedlist import SinglyLinkedList, DoublyLinkedList
 def main():
     l1 = SinglyLinkedList()
     l2 = SinglyLinkedList()
+
     l1.insert_at_start(1)
     l1.insert_at_start(2)
     l1.insert_at_start(3)
     l2.insert_at_start(3)
     l2.insert_at_start(5)
     l2.insert_at_start(9)
+    print(l1.start_node.element)
 
     
-    l3 = l1.add_two_linked_lists(l2)
-    l3.traverse()
+    
 
 
 def main2():
@@ -92,4 +93,12 @@ def main3():
     ld.add_rear(66)
     ld.traverse()
     print("success test")
-main3()
+#main()
+
+from linked_collections import PositionalList
+pl = PositionalList()
+pl.add_first(3)
+pl.add_last(100)
+for i in pl:
+    print(i)
+

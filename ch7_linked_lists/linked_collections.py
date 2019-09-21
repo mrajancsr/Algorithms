@@ -300,8 +300,11 @@ class LinkedDeque:
                 print(n.element, " ")
                 n = n.nref
 
-class PositionalList:
-    """Sequential Container of elements allowing positional access"""
+from linkedlist import DoublyLinkedBase
+class PositionalList(DoublyLinkedBase):
+    """Sequential Container of elements allowing positional access
+        Built out of DoublyLinkedList
+    """
 
     # -----------------nested Position class -----------------------
     class Position:
@@ -312,3 +315,86 @@ class PositionalList:
 
         def element(self):
             return self._node._element
+
+        def __eq__(self, other):
+            """Return True if other is a Position representing same location"""
+            return type(other) is type(self) and other._node is self._node 
+
+        def __ne__(self):
+            """return true if other does not represent the same location"""
+            return not (self == other)
+
+    def _validate(self, p):
+        """return position's node or raise appropriate error if invalid"""
+        if not isinstance(p, self.Position): raise("p must be proper Position type")
+        if p._container is not self: raise ValueError("p does not belong to this container")
+        if p._node._nref is None: raise ValueError("p is no longer valid")
+        return p._node
+
+    def _make_position(self, node):
+        """Return Position's instance for a given node (or None if sentinel)"""
+        if node in (self._start_node, self._end_node): return None 
+        else: return self.Position(self, node)
+# -----------Accessors ------------#
+    def first(self):
+        """return the first position in the list or None if empty"""
+        return self._make_position(self._start_node._nref)
+
+    def last(self):
+        """return last position in the list or None if empty"""
+        return self._make_position(self._end_node._pref)
+
+    def before(self, p):
+        """return position just before positon p or None if p is first"""
+        node = self._validate(p)
+        return self._make_position(node._pref)
+
+    def after(self, p):
+        """return position just after position p or None if p is last"""
+        node = self._validate(p)
+        return self._make_position(node._nref)
+
+    def __iter__(self):
+        """generate an iterator of elements in the list"""
+        cursor = self.first()
+        while cursor is not None:
+            yield cursor.element()
+            cursor = self.after(cursor)
+    # function overriden
+    def _insert_between(self, data, node1, node2):
+        """add element between existing nodes and return new position"""
+        node = super()._insert_between(data, node1, node2)
+        return self._make_position(node)
+
+    def add_first(self, data):
+        return self._insert_between(data, self._start_node, self._start_node._nref)
+
+    def add_last(self, data):
+        return self._insert_between(data, self._end_node._pref, self._end_node)
+
+    def add_before(self, p, data):
+        pnode = self._validate(p)
+        return self._insert_between(data, pnode.pref, pnode)
+
+    def add_after(self, p, data):
+        pnode = self._validate(p)
+        return self._insert_between(data, pnode, pnode._nref)
+
+    def delete(self, p):
+        """remove and return elemenet and position p"""
+        node = self._validate(p)
+        return self._delete_node(node)
+
+    def replace(self, p, data):
+        """replace element at position e with data"""
+
+        node = self._validate(p)
+        old_value = node._element
+        node._element = data 
+        return old_value
+
+
+
+
+
+
