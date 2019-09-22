@@ -386,8 +386,7 @@ class PositionalList(DoublyLinkedBase):
         return self._delete_node(node)
 
     def replace(self, p, data):
-        """replace element at position e with data"""
-
+        """replace element at position p with data"""
         node = self._validate(p)
         old_value = node._element
         node._element = data 
