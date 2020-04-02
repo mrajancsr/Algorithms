@@ -212,7 +212,7 @@ class BinaryTree(_BinaryTreeBase):
         """
         self._root = None
         self._size = 0
-        self._my_hash = {'preorder':self.preorder,'postorder': self.postorder, 'inorder': self.inorder,
+        self._my_hash = {'preorder':self.preorder, 'postorder': self.postorder, 'inorder': self.inorder,
         "breadthfirst": self.breadthfirst}
 
     def __len__(self):
