@@ -8,10 +8,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Optional
 
-from linked_lists.linked_base import (
-    EmptyException,
-    Node,
-)
+from linked_base import EmptyException, Node
 
 
 @dataclass
@@ -273,3 +270,11 @@ class SinglyLinkedList:
             print("item not found in index")
         else:
             nref = nref.nref
+
+
+if __name__ == "__main__":
+    # used for deubgging purposes
+    ss = SinglyLinkedList()
+    ss.insert_at_start(22)
+    ss.insert_at_end(44)
+    ss.traverse()

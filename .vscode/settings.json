@@ -18,5 +18,8 @@
     "terminal.integrated.env.osx": {
         "PYTHONPATH": "${workspaceFolder}"
     },
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
     
 }
