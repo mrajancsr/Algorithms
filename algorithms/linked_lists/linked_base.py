@@ -58,7 +58,6 @@ class Node:
         previous reference of the node
     """
 
-    # pyre-fixme
     element: Any
     pref: Optional[Node] = None
     nref: Optional[Node] = None
