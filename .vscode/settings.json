@@ -1,0 +1,22 @@
+{
+    "autoDocstring.docstringFormat": "numpy",
+    
+    "python.languageServer": "Pylance",
+    
+    "editor.formatOnSave": true,
+    "editor.codeLens": true,
+    "python.analysis.autoImportCompletions": true,
+    "code-runner.executorMap": {
+        "python": "$pythonPath -u $fullFileName"
+    },
+    "code-runner.clearPreviousOutput": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true,
+    },
+    "git.ignoreLimitWarning": true,
+    
+    "terminal.integrated.env.osx": {
+        "PYTHONPATH": "${workspaceFolder}"
+    },
+    
+}
