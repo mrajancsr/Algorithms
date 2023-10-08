@@ -45,7 +45,7 @@ class Position(metaclass=ABCMeta):
 @dataclass
 class Node:
     """
-    Create a node to store v alue and 2 references for LinkedList
+    Create a node to store value and 2 references for LinkedList
     Takes O(1) time
 
     Parameters
