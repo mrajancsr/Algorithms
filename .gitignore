@@ -2,3 +2,4 @@
 .DS_Store
 py_env
 *.cpython*.pyc
+old_stuff
