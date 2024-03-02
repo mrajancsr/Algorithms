@@ -12,7 +12,7 @@
             "console": "integratedTerminal",
             "cwd": "${fileDirname}",
             "env": {
-                "PYTHONPATH": "${PROJ_DIR}:${PYTHONPATH}"
+                "PYTHONPATH": "/Users/rajmani/Documents/research/Home/python/neptune-ai"
             }
         }
     ]
